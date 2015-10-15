@@ -1,39 +1,78 @@
 <html>
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0,minimal-ui">
-<link rel="stylesheet" type="text/css" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,minimal-ui">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.js"></script>
 </head>
+
 <body>
-<ul class="timeline">
-  <li>
-    <div class="timeline-label">2015</div>
-    <div class="timeline-popout">
-      <h4>October</h4>
-      <p>Morbi diam risus, pulvinar vel tellus quis, blandit iaculis velit. Proin a cursus neque. Sed bibendum placerat nisi ac rhoncus. Proin mattis eros sed nisi auctor pretium.</p>
-    </div>
-  </li>
-  <li>
-    <div class="timeline-label">2014</div>
-    <div class="timeline-popout">
-      <h4>December</h4>
-      <p>Morbi diam risus, pulvinar vel tellus quis, blandit iaculis velit. Proin a cursus neque. Sed bibendum placerat nisi ac rhoncus. Proin mattis eros sed nisi auctor pretium.</p>
-    </div>
-    <div class="timeline-popout">
-      <h4>June</h4>
-      <p>Morbi diam risus, pulvinar vel tellus quis, blandit iaculis velit. Proin a cursus neque. Sed bibendum placerat nisi ac rhoncus. Proin mattis eros sed nisi auctor pretium.</p>
-    </div>
-  </li>
-  <li>
-    <div class="timeline-label">2013</div>
-    <div class="timeline-popout">
-      <h4>November</h4>
-      <p>Morbi diam risus, pulvinar vel tellus quis, blandit iaculis velit. Proin a cursus neque. Sed bibendum placerat nisi ac rhoncus. Proin mattis eros sed nisi auctor pretium.</p>
-    </div>
-    <div class="timeline-popout">
-      <h4>August</h4>
-      <p>Morbi diam risus, pulvinar vel tellus quis, blandit iaculis velit. Proin a cursus neque. Sed bibendum placerat nisi ac rhoncus. Proin mattis eros sed nisi auctor pretium.</p>
-    </div>
-  </li>
-</ul>
+  <ul class="timeline">
+    <li data-timeline-number="1">
+      <div class="timeline-label">2015</div>
+      <div class="timeline-popout">
+        <h4>October</h4>
+        <p>Morbi diam risus, pulvinar vel tellus quis, blandit iaculis velit. Proin a cursus neque. Sed bibendum placerat nisi ac rhoncus. Proin mattis eros sed nisi auctor pretium.</p>
+      </div>
+    </li>
+    <li data-timeline-number="2">
+      <div class="timeline-label">2014</div>
+      <div class="timeline-popout">
+        <h4>December</h4>
+        <p>Morbi diam risus, pulvinar vel tellus quis, blandit iaculis velit. Proin a cursus neque. Sed bibendum placerat nisi ac rhoncus. Proin mattis eros sed nisi auctor pretium.</p>
+      </div>
+      <div class="timeline-popout">
+        <h4>June</h4>
+        <p>Morbi diam risus, pulvinar vel tellus quis, blandit iaculis velit. Proin a cursus neque. Sed bibendum placerat nisi ac rhoncus. Proin mattis eros sed nisi auctor pretium.</p>
+      </div>
+    </li>
+    <li data-timeline-number="3">
+      <div class="timeline-label">2013</div>
+      <div class="timeline-popout">
+        <h4>November</h4>
+        <p>Morbi diam risus, pulvinar vel tellus quis, blandit iaculis velit. Proin a cursus neque. Sed bibendum placerat nisi ac rhoncus. Proin mattis eros sed nisi auctor pretium.</p>
+      </div>
+      <div class="timeline-popout">
+        <h4>August</h4>
+        <p>Morbi diam risus, pulvinar vel tellus quis, blandit iaculis velit. Proin a cursus neque. Sed bibendum placerat nisi ac rhoncus. Proin mattis eros sed nisi auctor pretium.</p>
+      </div>
+    </li>
+  </ul>
+
+  <script type="text/javascript">
+    var extraBoxes = [
+      [{
+        'month': 'June',
+        'detail': 'I found a squirrel'
+      }, {
+        'month': 'May',
+        'detail': 'I lost my rat.'
+      }],
+      [{
+        'month': 'December',
+        'detail': 'Christmas!'
+      }, {
+        'month': 'April',
+        'detail': 'Easter'
+      }]
+    ];
+
+    $('.timeline li[data-timeline-number]').each(function(index, value) {
+      console.log($(value));
+      var idx = $(value).attr('data-timeline-number');
+      if (extraBoxes[idx]) {
+        var myBoxes = extraBoxes[idx];
+
+        for (var i = 0; i < myBoxes.length; i++) {
+          $(value).append('<div class="timeline-popout">' +
+            '<div class="heading4">' + myBoxes[i]['month'] + '</div>' +
+            '<div class="paragraph">' + myBoxes[i]['detail'] + '</div>' +
+            '</div>');
+        }
+      }
+    });
+    console.log($('.timeline li[data-timeline-number]'));
+  </script>
 </body>
+
 </html>
