@@ -11,9 +11,15 @@
     <li data-timeline-number="1">
       <div class="timeline-label">2015</div>
       <div class="timeline-popout">
-        <h4>October</h4>
-        <p>Morbi diam risus, pulvinar vel tellus quis, blandit iaculis velit. Proin a cursus neque. Sed bibendum placerat nisi ac rhoncus. Proin mattis eros sed nisi auctor pretium.</p>
-      </div>
+        <div class="paragraph">
+          <b>October</b>
+          <br> Morbi diam risus, pulvinar vel tellus quis, blandit iaculis velit. Proin a cursus neque. Sed bibendum placerat nisi ac rhoncus. Proin mattis eros sed nisi auctor pretium.
+          <br> ---
+          <br>
+          <b>June</b>
+          <br> New subbubble---another sub-bubble
+          <br>
+        </div>
     </li>
     <li data-timeline-number="2">
       <div class="timeline-label">2014</div>
@@ -40,38 +46,28 @@
   </ul>
 
   <script type="text/javascript">
-    var extraBoxes = [
-      [{
-        'month': 'June',
-        'detail': 'I found a squirrel'
-      }, {
-        'month': 'May',
-        'detail': 'I lost my rat.'
-      }],
-      [{
-        'month': 'December',
-        'detail': 'Christmas!'
-      }, {
-        'month': 'April',
-        'detail': 'Easter'
-      }]
-    ];
 
-    $('.timeline li[data-timeline-number]').each(function(index, value) {
-      console.log($(value));
-      var idx = $(value).attr('data-timeline-number');
-      if (extraBoxes[idx]) {
-        var myBoxes = extraBoxes[idx];
+    $(".timeline-popout").each(function(index, value) {
+      var html = $('div.paragraph', value).html();
 
-        for (var i = 0; i < myBoxes.length; i++) {
-          $(value).append('<div class="timeline-popout">' +
-            '<div class="heading4">' + myBoxes[i]['month'] + '</div>' +
-            '<div class="paragraph">' + myBoxes[i]['detail'] + '</div>' +
-            '</div>');
+      if (html) {
+        // split into sub-bubbles
+        var splitContents = html.split(/\s*(?:<br(?:\s*\/)?>)?\s*---\s*(?:<br(?:\s*\/)?>)?\s*/);
+        $('div.paragraph', value).html(splitContents[0]);
+
+        for (var i = 1; i < splitContents.length; i++) {
+          $(value).parent().append('<div class="timeline-popout"><div class="paragraph">' + splitContents[i] + '</div></div>');
         }
       }
     });
-    console.log($('.timeline li[data-timeline-number]'));
+
+    $(".timeline-popout").each(function(index, value) {
+      var html = $(this).html();
+
+      if (html) {
+        $(this).html(html.replace(/<b>(.+?)<\/b>\s*<br(?:\s*\/)?>/, '<h4>$1</h4>'));
+      }
+    });
   </script>
 </body>
 

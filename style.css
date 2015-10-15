@@ -41,13 +41,13 @@ ul.timeline {
         margin: 0 0 .5em; }
       ul.timeline li .timeline-popout p {
         margin: .5em 0 0; }
-    ul.timeline li .timeline-popout::before {
+    ul.timeline li .timeline-popout:nth-child(2)::before {
       content: " ";
       position: absolute;
       top: 24px;
       border-top: 15px solid transparent;
       border-bottom: 15px solid transparent; }
-    ul.timeline li .timeline-popout::after {
+    ul.timeline li .timeline-popout:nth-child(2)::after {
       content: " ";
       position: absolute;
       top: 25px;
@@ -60,18 +60,18 @@ ul.timeline {
     clear: both; }
   ul.timeline li:nth-child(even) .timeline-popout {
     float: right; }
-  ul.timeline li:nth-child(even) .timeline-popout::before {
+  ul.timeline li:nth-child(even) .timeline-popout:nth-child(2)::before {
     left: -15px;
     border-right: 15px solid #ccc; }
-  ul.timeline li:nth-child(even) .timeline-popout::after {
+  ul.timeline li:nth-child(even) .timeline-popout:nth-child(2)::after {
     left: -14px;
     border-right: 14px solid #fff; }
   ul.timeline li:nth-child(odd) .timeline-popout {
     float: left; }
-  ul.timeline li:nth-child(odd) .timeline-popout::before {
+  ul.timeline li:nth-child(odd) .timeline-popout:nth-child(2)::before {
     right: -15px;
     border-left: 15px solid #ccc; }
-  ul.timeline li:nth-child(odd) .timeline-popout::after {
+  ul.timeline li:nth-child(odd) .timeline-popout:nth-child(2)::after {
     right: -14px;
     border-left: 14px solid #fff; }
 

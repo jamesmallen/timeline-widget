@@ -68,7 +68,7 @@ ul.timeline {
       }
     }
 
-    .timeline-popout::before {
+    .timeline-popout:nth-child(2)::before {
       content: " ";
       position: absolute;
       top: $label-size/2;
@@ -76,7 +76,7 @@ ul.timeline {
       border-bottom: $trans-border;
     }
 
-    .timeline-popout::after {
+    .timeline-popout:nth-child(2)::after {
       content: " ";
       position: absolute;
       top: $label-size / 2 + 1;
@@ -99,11 +99,11 @@ ul.timeline {
     .timeline-popout {
       float: right;
     }
-    .timeline-popout::before {
+    .timeline-popout:nth-child(2)::before {
       left: -$popout-triangle-size;
       border-right: $color-border;
     }
-    .timeline-popout::after {
+    .timeline-popout:nth-child(2)::after {
       left: -$popout-triangle-size + 1;
       border-right: $color-inner-border;
     }
@@ -114,11 +114,11 @@ ul.timeline {
     .timeline-popout {
       float: left;
     }
-    .timeline-popout::before {
+    .timeline-popout:nth-child(2)::before {
       right: -$popout-triangle-size;
       border-left: $color-border;
     }
-    .timeline-popout::after {
+    .timeline-popout:nth-child(2)::after {
       right: -$popout-triangle-size + 1;
       border-left: $color-inner-border;
     }
